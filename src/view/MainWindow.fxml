@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.canvas.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+<?import view.PipeDisplayer?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.MainWindowController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" onAction="#openFile" text="Open Stage" />
+                  <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save Stage" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+                <MenuItem mnemonicParsing="false" onAction="#openSettingssWindow" text="Connection Settings" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="View">
+              <items>
+                  <Menu mnemonicParsing="false" text="Choose theme">
+                    <items>
+                        <RadioMenuItem fx:id="ThemeAnt" mnemonicParsing="false" onAction="#antTheme" text="Ant">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="Theme" />
+                           </toggleGroup>
+                        </RadioMenuItem>
+                        <RadioMenuItem fx:id="ThemeCar" mnemonicParsing="false" onAction="#carTheme" selected="true" text="Car" toggleGroup="$Theme" />
+                    </items>
+                  </Menu>
+              </items>
+            </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <left>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="85.0" onAction="#checkCompletion" text="Check" />
+            <Button mnemonicParsing="false" prefHeight="39.0" prefWidth="86.0" onAction="#solveProblem" text="Solve" />
+         	<Label prefHeight="27.0" prefWidth="85.0" text="Moves:" />
+            <TextField fx:id="TextMoves" alignment="CENTER" editable="false" prefHeight="39.0" prefWidth="47.0" />
+            <Label prefHeight="27.0" prefWidth="85.0" text="Play Time:" />
+            <TextField fx:id="TextSeconds" alignment="CENTER" editable="false" prefHeight="39.0" prefWidth="85.0" />
+         </children>
+      </VBox>
+   </left>
+   <bottom>
+      <HBox BorderPane.alignment="CENTER">
+         <children>
+            <Label text="Status: " />
+            <Label text="Disconnected" fx:id="TextConnectionStatus" />
+         </children>
+      </HBox>
+   </bottom>
+   <center>
+      <PipeDisplayer fx:id="pipeDisplayer" height="300.0" width="300.0" BorderPane.alignment="CENTER" theme="./resources/Car"/>
+   </center>
+</BorderPane>
